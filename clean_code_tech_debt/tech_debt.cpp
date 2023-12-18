@@ -4,7 +4,7 @@ int main()
 {
     std::cout << "\n\tTech Debt - Clean Code\n\n\t";
     
-    std::cout << "Exercise: choose suitable variable names.\n\t";
+    std::cout << "Exercise: choose suitable variable names.\n\n\t";
     std::cout << "const today = new Date()\n\t";
     std::cout << "const elapsed_days: number = 23\n\t";
     std::cout << "const files_in_directory = 33\n\t";
@@ -13,7 +13,7 @@ int main()
     std::cout << "const last_day_of_modification = 12\n\t";
     std::cout << "const max_classes_per_student = 6\n\n";
 
-//------------------------------------------------------------------------
+//-------------------------------------------------------------------------
 
     std::cout << "\n\tExercise: choose suitable names according to the type.\n\n\t";
     std::cout << "const celsius_temps = [33.6, 12.34]\n\t";
@@ -31,9 +31,17 @@ int main()
     std::cout << "function calculate_square_area(float side)\n\t";
     std::cout << "function print_job()\n\t";
 
-//------------------------------------------------------------------------
+//-------------------------------------------------------------------------
 
-//------------------------------------------------------------------------
+    std::cout << "\n\tExercise: choose suitable names for the functions.\n\n\t";
+    std::cout << "function get_movie_by_id(id: string)\n\t";
+    std::cout << "function get_movie_actors_by_id(id: string)\n\t";
+    std::cout << "function get_actor_bio_by_id(id: string)\n\t";
+    std::cout << "object movie{title, description, rating, cast}\n\t";
+    std::cout << "function create_movie(new_movie: movie{})\n\t";
+    std::cout << "function create_actor(fullname: string, birthdate: Date)\n\t";
+
+//-------------------------------------------------------------------------
 
     return 0;
 }
