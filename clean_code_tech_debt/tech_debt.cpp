@@ -102,6 +102,41 @@ int main()
 
     })();
     */
+
+//------------------------------------------------------------------------------
+
+    /* DRY - Don't repeat yourself
+
+    type Size =  ''|'S' | 'M' | 'L' | 'XL';
+
+    class Product {
+
+        constructor (
+            public name: string = '',
+            public price: number = 0,
+            public size: Size = ''
+        ) {}
+
+        isProductReady(){
+            return this.name.length > 0 && this.price > 0 && this.size.length > 0;
+        }
+
+
+        toString() {
+            isProductReady() return;
+            return `Product: ${this.name}, Price: ${this.price}, Size: ${this.size}`;
+        }
+    };
+
+    (() => {
+        
+        const bluePants = new Product('Blue Pants', 100, 'M');
+        console.log(bluePants.toString());
+
+    })();
+    
+    */
+
 //------------------------------------------------------------------------------
 
     return 0;
