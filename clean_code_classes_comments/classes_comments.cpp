@@ -4,56 +4,74 @@ using namespace std;
 
 enum Gender{ MALE, FEMALE};
 
-class Person
+//------------------------------------------------------------------------------
+
+class PersonProps
 {
     public:
         string mName;
         Gender mGender;
-        string mBirthday;
+        string mBirthday = string();
 
-        Person(string name = string(), Gender gender = FEMALE, string birthday = "01/01/1950"):
-            mName{name}, mGender{gender}, mBirthday{birthday} {}
-        
-        void printPerson() const;
+        PersonProps(string name, Gender gender):
+                    mName{name}, mGender{gender} {}
+
+        ~PersonProps() {};
+};
+
+class Person: public PersonProps
+{
+    public:
+        Person(string name = string(), Gender gender = FEMALE): 
+               PersonProps{name, gender} {};
 
         ~Person() {};
 };
 
-void Person::printPerson() const
-{
-    std::cout << "\nPerson:"
-              << "\nName: " << mName 
-              << "\nGender: " << mGender 
-              << "\nBirthday: " << mBirthday
-              << std::endl;
-}
-
 //------------------------------------------------------------------------------
 
-class User: public Person
+class UserProps: public Person
 {
     public:
         string mUsername;
         string mPassword;
 
-        User(string username = string(), string password = string(), Person person = Person()):
-            mUsername{username}, mPassword{password} {}
+        UserProps(Person person, string username, string password): Person{person},
+                  mUsername{username}, mPassword{password} {}
 
-        bool checkCredentials() const { return true; }
+        ~UserProps() {};
+};
+
+class User: public UserProps
+{
+    public:
+        User(Person person = Person(), string username = string(),
+             string password = string()): UserProps{person, username, password} {}
 
         ~User() {};
 };
 
 //------------------------------------------------------------------------------
 
-class UserSettings: public User
+class UserSettingsProps: public User
 {
     public:
         string mWorkingDirectory;
         string mLastOpenedFolder;
 
-        UserSettings(string workingDirectory = string(), string lastOpenFolder = string(), User user = User()):
-            mWorkingDirectory{workingDirectory}, mLastOpenedFolder{lastOpenFolder}{}
+        UserSettingsProps(User user, string workingDirectory, string lastOpenFolder):
+                          User{user}, mWorkingDirectory{workingDirectory},
+                          mLastOpenedFolder{lastOpenFolder} {}
+
+        ~UserSettingsProps() {};
+};
+
+class UserSettings: public UserSettingsProps
+{
+    public:
+        UserSettings(User user = User(), string workingDirectory = string(),
+                     string lastOpenFolder = string()):
+                     UserSettingsProps{user, workingDirectory, lastOpenFolder} {}
 
         ~UserSettings() {};
 };
@@ -62,15 +80,14 @@ class UserSettings: public User
 
 int main()
 {
-    Person person("Camilo", MALE, "01/01/1990");
-    person.printPerson();
+    Person person("Camilo", MALE);
+    person.mBirthday = "01/01/1990";
+    cout << "\n\n" << person.mBirthday << endl;
 
-    User username("CamiloA", "1234");
+    User user(person, "CamiloA", "1234");
+    UserSettings userSettings(user, "C:/Users/CamiloA", "C:/Users/CamiloA/Downloads");
 
-    UserSettings userSettings("C:/Users/CamiloA", "C:/Users/CamiloA/Downloads", username);
-
-    userSettings.mBirthday = "01/01/1990";
-    cout << "\n\n" << userSettings.mBirthday << endl;
+    cout << "\n\n" << userSettings.mName << endl;
 
     return 0;
 }
