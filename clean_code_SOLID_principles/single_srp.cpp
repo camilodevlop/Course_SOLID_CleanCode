@@ -106,14 +106,15 @@ class ProductBloc
 int main()
 {
     Product auto1(1, "Auto");
-    ProductService productService {}; //= ProductService();
-    Mailer mailer {}; //= Mailer();
+    ProductService productService {};
+    Mailer mailer {};
     ProductBloc productBloc(productService, mailer);
-    CartBloc cartBloc;
 
     productBloc.loadProduct(auto1.mId);
     productBloc.saveProduct(auto1);
     productBloc.notifyClients("clien1@mail.com, client2@mail.com", "New product");
+
+    CartBloc cartBloc;
     cartBloc.addToCart(auto1.mId);
 
     return 0;
