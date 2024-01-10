@@ -17,4 +17,4 @@ feature/clean_code_STUPID_acronym:
 
 feature/clean_code_SOLID_principles
 
-    
+    v1.0.0
