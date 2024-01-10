@@ -14,3 +14,7 @@ feature/clean_code_classes_comments:
 feature/clean_code_STUPID_acronym:
 
     v0.3.0 
+
+feature/clean_code_SOLID_principles
+
+    v1.0.0
